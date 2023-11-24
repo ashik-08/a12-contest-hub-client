@@ -1,7 +1,9 @@
+import { Outlet } from "react-router-dom";
+
 const MainLayout = () => {
   return (
     <section>
-      <h2 className="text-5xl">This is main x p</h2>
+      <Outlet />
     </section>
   );
 };
