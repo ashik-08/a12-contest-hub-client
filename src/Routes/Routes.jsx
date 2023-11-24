@@ -3,7 +3,7 @@ import MainLayout from "../layout/MainLayout";
 import HomePage from "../pages/HomePage/HomePage";
 import Register from "../pages/Register/Register";
 
-export const router = createBrowserRouter([
+export const routes = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
