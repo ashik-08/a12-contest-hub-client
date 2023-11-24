@@ -1,11 +1,13 @@
-import NavBar from "../../components/NavBar/NavBar";
+import { Helmet } from "react-helmet-async";
 
 const HomePage = () => {
-    return (
-        <div>
-            <NavBar />
-        </div>
-    );
+  return (
+    <section>
+      <Helmet>
+        <title>Contest Hub | Home</title>
+      </Helmet>
+    </section>
+  );
 };
 
 export default HomePage;
