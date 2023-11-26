@@ -19,7 +19,7 @@ const Footer = () => {
     },
     {
       title: "Address",
-      items: ["Mohakhali, Dhaka", "info@ctest-hub.com", "01712-345678"],
+      items: ["Mohakhali, Dhaka", "info@contest-hub.com", "01712-345678"],
     },
   ];
 

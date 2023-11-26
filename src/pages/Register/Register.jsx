@@ -6,7 +6,6 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../components/hooks/useAxiosPublic";
-import Container from "../../components/Container/Container";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
@@ -22,7 +21,6 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
     const toastId = toast.loading("Registering User...");
 
     // create user
@@ -83,185 +81,112 @@ const Register = () => {
       });
   };
 
-  //   const handleRegister = (e) => {
-  //     e.preventDefault();
-  //     const form = e.target;
-  //     const name = form.name.value;
-  //     const email = form.email.value;
-  //     const photo = form.photo.value;
-  //     const password = form.password.value;
-  //     // const terms = form.terms.checked;
-  //     // console.log(name, email, password, photo, terms);
-
-  //     const passRegex =
-  //       /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+[\]{};':"\\|,.<>?])[A-Za-z\d!@#$%^&*()_+[\]{};':"\\|,.<>?]{6,}$/;
-
-  //     // check password
-  //     if (!passRegex.test(password)) {
-  //       toast.error(
-  //         "Password must contain one uppercase letter, one special character, and minimum 6 characters."
-  //       );
-  //       return;
-  //     }
-
-  //     const toastId = toast.loading("Registering User...");
-
-  //     // create user
-  //     createUser(email, password)
-  //       .then(async (result) => {
-  //         console.log(result.user);
-  //         // update profile
-  //         updateProfile(result.user, {
-  //           displayName: name,
-  //           photoURL: photo,
-  //         })
-  //           .then(() => {
-  //             // Profile updated!
-  //           })
-  //           .catch(() => {
-  //             // An error occurred
-  //           });
-
-  //         // add new user to the database
-  //         const createdAt = result?.user?.metadata?.creationTime;
-  //         const user = { name, photo, email, password, createdAt: createdAt };
-
-  //         try {
-  //           const result = await mutateAsync(user);
-  //           if (result.insertedId) {
-  //             toast.success("User Created Successfully.");
-  //           } else if (result.message === "Already exists") {
-  //             console.log("User already exist.");
-  //           }
-  //         } catch (error) {
-  //           console.error(error);
-  //           toast.error(error.message);
-  //         }
-  //         toast.success("Registered Successfully.", { id: toastId });
-  //         form.reset();
-  //         navigate("/");
-  //       })
-  //       .catch((error) => {
-  //         console.error(error);
-  //         // check for duplicate email usage
-  //         if (error.message === "Firebase: Error (auth/email-already-in-use).") {
-  //           toast.error("Email is in use already", { id: toastId });
-  //         } else if (error.message === "Firebase: Error (auth/invalid-email).") {
-  //           toast.error("Invalid Email", { id: toastId });
-  //         }
-  //       });
-  //   };
-
   return (
     <>
       <Helmet>
         <title>Contest Hub | Register</title>
       </Helmet>
-      <Container>
-        <section className="flex flex-col lg:flex-row items-center gap-16 my-20 lg:my-6">
-          <div className="flex-1">
-            <img
-              className="outline-dashed outline-1 outline-blue-gray-50 rounded-xl animate-pulse"
-              src="https://i.ibb.co/k5vCkDF/Sign-up.gif"
-              alt=""
-            />
-          </div>
-          <div className="flex-1 w-full xl:w-4/5 outline-dotted outline-1 outline-blue-gray-100 p-6 md:p-16 rounded-xl">
-            <h1 className="text-center text-2xl md:text-3xl lg:text-4xl font-semibold mb-12">
-              Sign Up
-            </h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <span className="space-y-4">
-                <p className="text-sub-head text-lg font-semibold">Name</p>
-                <input
-                  className="text-details w-full px-5 py-4 rounded-lg outline outline-1 outline-details"
-                  type="text"
-                  {...register("name")}
-                  placeholder="Your Name"
-                  required
-                />
+      <section className="flex flex-col lg:flex-row items-center gap-16 md:gap-24 container mx-auto my-20 lg:my-6">
+        <div className="flex-1">
+          <img
+            className="outline-dashed outline-1 outline-blue-gray-50 rounded-xl animate-pulse"
+            src="https://i.ibb.co/k5vCkDF/Sign-up.gif"
+            alt=""
+          />
+        </div>
+        <div className="flex-1 w-full outline-dotted outline-1 outline-blue-gray-100 p-6 md:p-16 rounded-xl">
+          <h1 className="text-center text-2xl md:text-3xl lg:text-4xl font-semibold mb-12">
+            Sign Up
+          </h1>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <span className="space-y-4">
+              <p className="text-sub-head text-lg font-semibold">Name</p>
+              <input
+                className="text-details w-full px-5 py-4 rounded-lg outline outline-1 outline-details"
+                type="text"
+                {...register("name")}
+                placeholder="Your Name"
+                required
+              />
+            </span>
+            <span className="space-y-4">
+              <p className="text-sub-head text-lg font-semibold mt-8">Email</p>
+              <input
+                className="text-details w-full px-5 py-4 rounded-lg outline outline-1 outline-details"
+                type="email"
+                {...register("email")}
+                placeholder="Your Email"
+                required
+              />
+            </span>
+            <span className="space-y-4">
+              <p className="text-sub-head text-lg font-semibold mt-8">
+                Photo URL
+              </p>
+              <input
+                className="text-details w-full px-5 py-4 rounded-lg outline outline-1 outline-details"
+                type="url"
+                {...register("photo")}
+                placeholder="Your Photo URL"
+                required
+              />
+            </span>
+            <span className="space-y-4 relative">
+              <p className="text-sub-head text-lg font-semibold mt-8">
+                Password
+              </p>
+              <input
+                className="text-details w-full px-5 py-4 rounded-lg outline outline-1 outline-details"
+                type={showPass ? "text" : "password"}
+                {...register("password", {
+                  minLength: 6,
+                  pattern:
+                    /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~\\-]).{6,}$/,
+                })}
+                placeholder="Your Password"
+                required
+              />
+              <span
+                className="absolute bottom-0 right-3"
+                onClick={() => setShowPass(!showPass)}
+              >
+                {showPass ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>}
               </span>
-              <span className="space-y-4">
-                <p className="text-sub-head text-lg font-semibold mt-8">
-                  Email
-                </p>
-                <input
-                  className="text-details w-full px-5 py-4 rounded-lg outline outline-1 outline-details"
-                  type="email"
-                  {...register("email")}
-                  placeholder="Your Email"
-                  required
-                />
-              </span>
-              <span className="space-y-4">
-                <p className="text-sub-head text-lg font-semibold mt-8">
-                  Photo URL
-                </p>
-                <input
-                  className="text-details w-full px-5 py-4 rounded-lg outline outline-1 outline-details"
-                  type="url"
-                  {...register("photo")}
-                  placeholder="Your Photo URL"
-                  required
-                />
-              </span>
-              <span className="space-y-4 relative">
-                <p className="text-sub-head text-lg font-semibold mt-8">
-                  Password
-                </p>
-                <input
-                  className="text-details w-full px-5 py-4 rounded-lg outline outline-1 outline-details"
-                  type={showPass ? "text" : "password"}
-                  {...register("password", {
-                    minLength: 6,
-                    pattern:
-                      /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~\\-]).{6,}$/,
-                  })}
-                  placeholder="Your Password"
-                  required
-                />
-                <span
-                  className="absolute bottom-0 right-3"
-                  onClick={() => setShowPass(!showPass)}
+            </span>
+            {errors.password && (
+              <p className="mt-3 text-red-500">
+                Password must contain one uppercase letter, one special
+                character, and not less than 6 characters.
+              </p>
+            )}
+            <span className="flex gap-3 mt-5">
+              <input type="checkbox" name="terms" required />
+              <p className="text-sub-head">
+                I agree the
+                <a
+                  href="#"
+                  className="text-details font-medium hover:text-special"
                 >
-                  {showPass ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>}
-                </span>
-              </span>
-              {errors.password && (
-                <p className="mt-3 text-red-500">
-                  Password must contain one uppercase letter, one special
-                  character, and not less than 6 characters.
-                </p>
-              )}
-              <span className="flex gap-3 mt-5">
-                <input type="checkbox" name="terms" required />
-                <p className="text-sub-head">
-                  I agree the
-                  <a
-                    href="#"
-                    className="text-details font-medium hover:text-special"
-                  >
-                    &nbsp;Terms and Conditions
-                  </a>
-                </p>
-              </span>
-              <button className="bg-special text-white text-xl font-semibold py-4 w-full rounded-lg my-8">
-                <input
-                  className="cursor-pointer"
-                  type="submit"
-                  value="Register"
-                />
-              </button>
-            </form>
-            <p className="text-center text-sub-head text-lg">
-              Already have an account?{" "}
-              <Link to="/login" className="text-head font-semibold">
-                Login
-              </Link>
-            </p>
-          </div>
-        </section>
-      </Container>
+                  &nbsp;Terms and Conditions
+                </a>
+              </p>
+            </span>
+            <button className="bg-special text-white text-xl font-semibold py-4 w-full rounded-lg my-8">
+              <input
+                className="cursor-pointer"
+                type="submit"
+                value="Register"
+              />
+            </button>
+          </form>
+          <p className="text-center text-sub-head text-lg">
+            Already have an account?{" "}
+            <Link to="/login" className="text-head font-semibold">
+              Login
+            </Link>
+          </p>
+        </div>
+      </section>
     </>
   );
 };

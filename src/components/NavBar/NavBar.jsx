@@ -1,33 +1,24 @@
-// import { useContext } from "react";
-// import { Link, NavLink } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import Container from "../Container/Container";
-// import { Container } from "postcss";
-// import Container from "../Container/Container";
-// import { AuthContext } from "../../Provider/AuthProvider";
-// import toast from "react-hot-toast";
-// import { GrCart } from "react-icons/gr";
-// import useCart from "../hooks/useCart";
-// import useAdmin from "../hooks/useAdmin";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const NavBar = () => {
-  const user = null;
-  //   const { user, logOut } = useContext(AuthContext);
-  //   const [cart] = useCart();
-  //   const [isAdmin] = useAdmin();
+  const { user, logOut } = useContext(AuthContext);
 
-  //   const handleLogout = () => {
-  //     const toastId = toast.loading("Logging Out...");
-  //     logOut()
-  //       .then(() => {
-  //         toast.success("Logged Out Successfully.", { id: toastId });
-  //       })
-  //       .catch((error) => {
-  //         console.error(error);
-  //         toast.error("Something went wrong!", { id: toastId });
-  //       });
-  //   };
+  const handleLogout = () => {
+    const toastId = toast.loading("Logging Out...");
+    logOut()
+      .then(() => {
+        toast.success("Logged Out Successfully.", { id: toastId });
+      })
+      .catch((error) => {
+        console.error(error);
+        toast.error("Something went wrong!", { id: toastId });
+      });
+  };
 
   const links = (
     <>
@@ -127,20 +118,13 @@ const NavBar = () => {
                   >
                     <>
                       <li>
-                        <a>{user?.email}</a>
+                        <p>{user?.displayName}</p>
                       </li>
                       <li>
-                        <a>{user?.displayName}</a>
-                        {/* <Link to="/add-food-item">Add Food Item</Link> */}
+                        <Link to="/dashboard">Dashboard</Link>
                       </li>
                       <li>
-                        {/* <Link to="/added-food-items">My Added Food Items</Link> */}
-                      </li>
-                      <li>
-                        {/* <Link to="/ordered-food-items">My Ordered Food Items</Link> */}
-                      </li>
-                      <li>
-                        {/* <button onClick={handleLogout}>Logout</button> */}
+                        <button onClick={handleLogout}>Logout</button>
                       </li>
                     </>
                   </ul>
