@@ -4,16 +4,19 @@ module.exports = withMT({
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      merriweather: ["Merriweather", "serif"],
+      slab: ["Roboto Slab", "serif"],
       roboto: ["Roboto", "sans-serif"],
     },
     extend: {
       colors: {
-        primary: "#3498db",
+        head: "#3498db",
+        // primary: "#4CAF50",
         special: "#9b59b6",
-        head: "#2c3e50",
-        para: "#95a5a6",
-        details: "#bdc3c7",
+        // head: "#2c3e50",
+        // para: "#95a5a6",
+        // details: "#bdc3c7",
+        'sub-head': "#333333",
+        details: "#888888",
       },
     },
   },

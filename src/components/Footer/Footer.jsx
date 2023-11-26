@@ -40,7 +40,7 @@ const Footer = () => {
                 <Link to="/">
                   <Typography
                     variant="h5"
-                    className="text-primary text-2xl md:text-3xl lg:text-4xl font-merriweather font-black pt-1 md:pt-1.5"
+                    className="text-head text-2xl md:text-3xl lg:text-4xl font-slab font-bold pt-1 md:pt-1.5"
                   >
                     Contest Hub
                   </Typography>
@@ -63,7 +63,7 @@ const Footer = () => {
                         as="a"
                         href="#"
                         color="gray"
-                        className="text-para py-1.5 text-sm md:text-base font-normal transition-colors hover:text-blue-gray-900"
+                        className="py-1.5 text-sm md:text-base font-normal transition-colors hover:text-blue-gray-900"
                       >
                         {link}
                       </Typography>

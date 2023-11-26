@@ -166,15 +166,15 @@ const Register = () => {
               alt=""
             />
           </div>
-          <div className="flex-1 w-full outline-dotted outline-1 outline-blue-gray-100 p-6 md:p-16 rounded-xl">
+          <div className="flex-1 w-full xl:w-4/5 outline-dotted outline-1 outline-blue-gray-100 p-6 md:p-16 rounded-xl">
             <h1 className="text-center text-2xl md:text-3xl lg:text-4xl font-semibold mb-12">
               Sign Up
             </h1>
             <form onSubmit={handleSubmit(onSubmit)}>
               <span className="space-y-4">
-                <p className="text-lg font-semibold">Name</p>
+                <p className="text-sub-head text-lg font-semibold">Name</p>
                 <input
-                  className="text-blue-gray-600 w-full px-5 py-4 rounded-lg outline outline-1 outline-details"
+                  className="text-details w-full px-5 py-4 rounded-lg outline outline-1 outline-details"
                   type="text"
                   {...register("name")}
                   placeholder="Your Name"
@@ -182,9 +182,11 @@ const Register = () => {
                 />
               </span>
               <span className="space-y-4">
-                <p className="text-lg font-semibold mt-8">Email</p>
+                <p className="text-sub-head text-lg font-semibold mt-8">
+                  Email
+                </p>
                 <input
-                  className="text-blue-gray-600 w-full px-5 py-4 rounded-lg outline outline-1 outline-details"
+                  className="text-details w-full px-5 py-4 rounded-lg outline outline-1 outline-details"
                   type="email"
                   {...register("email")}
                   placeholder="Your Email"
@@ -192,9 +194,11 @@ const Register = () => {
                 />
               </span>
               <span className="space-y-4">
-                <p className="text-lg font-semibold mt-8">Photo URL</p>
+                <p className="text-sub-head text-lg font-semibold mt-8">
+                  Photo URL
+                </p>
                 <input
-                  className="text-blue-gray-600 w-full px-5 py-4 rounded-lg outline outline-1 outline-details"
+                  className="text-details w-full px-5 py-4 rounded-lg outline outline-1 outline-details"
                   type="url"
                   {...register("photo")}
                   placeholder="Your Photo URL"
@@ -202,9 +206,11 @@ const Register = () => {
                 />
               </span>
               <span className="space-y-4 relative">
-                <p className="text-lg font-semibold mt-8">Password</p>
+                <p className="text-sub-head text-lg font-semibold mt-8">
+                  Password
+                </p>
                 <input
-                  className="text-blue-gray-600 w-full px-5 py-4 rounded-lg outline outline-1 outline-details"
+                  className="text-details w-full px-5 py-4 rounded-lg outline outline-1 outline-details"
                   type={showPass ? "text" : "password"}
                   {...register("password", {
                     minLength: 6,
@@ -229,11 +235,11 @@ const Register = () => {
               )}
               <span className="flex gap-3 mt-5">
                 <input type="checkbox" name="terms" required />
-                <p className="text-head">
+                <p className="text-sub-head">
                   I agree the
                   <a
                     href="#"
-                    className="text-details font-medium hover:text-head"
+                    className="text-details font-medium hover:text-special"
                   >
                     &nbsp;Terms and Conditions
                   </a>
@@ -247,9 +253,9 @@ const Register = () => {
                 />
               </button>
             </form>
-            <p className="text-center text-head text-lg">
+            <p className="text-center text-sub-head text-lg">
               Already have an account?{" "}
-              <Link to="/login" className="text-primary font-semibold">
+              <Link to="/login" className="text-head font-semibold">
                 Login
               </Link>
             </p>

@@ -85,7 +85,7 @@ const NavBar = () => {
                 />
                 <Link
                   to="/"
-                  className="text-primary md:text-3xl xl:text-4xl font-merriweather font-black"
+                  className="text-head md:text-3xl xl:text-4xl font-slab font-bold"
                 >
                   Contest Hub
                 </Link>
