@@ -80,7 +80,7 @@ const NavBar = () => {
       </li>
       <li>
         <NavLink to="/dashboard/contest-submitted">
-          Contest Submitted Page
+          Contest Submitted
         </NavLink>
       </li>
     </>
@@ -99,7 +99,7 @@ const NavBar = () => {
 
   const dashboardLinks = (
     <>
-      {userRole?.user && userLinks}
+      {userRole?.participant && userLinks}
       {userRole?.creator && creatorLinks}
       {userRole?.admin && adminLinks}
     </>
@@ -192,13 +192,13 @@ const NavBar = () => {
                           {user?.displayName}
                         </p>
                       </li>
-                      {location?.pathname === "/dashboard" ? (
+                      {location?.pathname.includes("/dashboard") ? (
                         <>
                           <li>
                             <Link to="/">Home</Link>
                           </li>
                           <li>
-                            <Link to="/all-contest">Contest</Link>
+                            <Link to="/all-contest">All Contest</Link>
                           </li>
                         </>
                       ) : (

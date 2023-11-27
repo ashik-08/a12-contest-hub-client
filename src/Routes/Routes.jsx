@@ -6,6 +6,7 @@ import Login from "../pages/Login/Login";
 import DashboardLayout from "../layout/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../pages/DashboardPage/Dashboard";
+import ManageUsers from "../pages/DashboardPage/Admin/ManageUsers";
 
 export const routes = createBrowserRouter([
   {
@@ -31,6 +32,15 @@ export const routes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Dashboard />
+          </PrivateRoute>
+        ),
+      },
+      // admin routes
+      {
+        path: "manage-users",
+        element: (
+          <PrivateRoute>
+            <ManageUsers />
           </PrivateRoute>
         ),
       },
