@@ -1,12 +1,15 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import Container from "../Container/Container";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
+import useGetRole from "../hooks/useGetRole";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [userRole] = useGetRole();
+  const location = useLocation();
 
   const handleLogout = () => {
     const toastId = toast.loading("Logging Out...");
@@ -34,6 +37,71 @@ const NavBar = () => {
           Home
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/all-contest"
+          className={({ isActive }) =>
+            isActive
+              ? "text-special text-sm md:text-lg font-bold"
+              : "text-sm md:text-lg"
+          }
+        >
+          All Contest
+        </NavLink>
+      </li>
+    </>
+  );
+
+  const userLinks = (
+    <>
+      <li>
+        <NavLink to="/dashboard/participated-contests">
+          My Participated Contests
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/winning-contests">My Winning Contests</NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/profile">My Profile</NavLink>
+      </li>
+    </>
+  );
+
+  const creatorLinks = (
+    <>
+      <li>
+        <NavLink to="/dashboard/add-contest">Add Contest</NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/my-created-contests">
+          My Created Contests
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/contest-submitted">
+          Contest Submitted Page
+        </NavLink>
+      </li>
+    </>
+  );
+
+  const adminLinks = (
+    <>
+      <li>
+        <NavLink to="/dashboard/manage-users">Manage Users</NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/manage-contests">Manage Contests</NavLink>
+      </li>
+    </>
+  );
+
+  const dashboardLinks = (
+    <>
+      {userRole?.user && userLinks}
+      {userRole?.creator && creatorLinks}
+      {userRole?.admin && adminLinks}
     </>
   );
 
@@ -64,7 +132,7 @@ const NavBar = () => {
                   tabIndex={0}
                   className="menu menu-sm dropdown-content mt-4 z-[1] p-2 drop-shadow-lg bg-base-100 rounded-box w-max"
                 >
-                  {links}
+                  {location?.pathname === "/" ? links : dashboardLinks}
                 </ul>
               </div>
               {/* logo & name */}
@@ -87,7 +155,9 @@ const NavBar = () => {
           </div> */}
             <div className="navbar-end">
               <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal">{links}</ul>
+                <ul className="menu menu-horizontal">
+                  {location?.pathname === "/" ? links : dashboardLinks}
+                </ul>
               </div>
               {user?.email ? (
                 // dropdown icon
@@ -118,11 +188,27 @@ const NavBar = () => {
                   >
                     <>
                       <li>
-                        <p>{user?.displayName}</p>
+                        <p className="pointer-events-none">
+                          {user?.displayName}
+                        </p>
                       </li>
-                      <li>
+                      {location?.pathname === "/dashboard" ? (
+                        <>
+                          <li>
+                            <Link to="/">Home</Link>
+                          </li>
+                          <li>
+                            <Link to="/all-contest">Contest</Link>
+                          </li>
+                        </>
+                      ) : (
+                        <li>
+                          <Link to="/dashboard">Dashboard</Link>
+                        </li>
+                      )}
+                      {/* <li>
                         <Link to="/dashboard">Dashboard</Link>
-                      </li>
+                      </li> */}
                       <li>
                         <button onClick={handleLogout}>Logout</button>
                       </li>
