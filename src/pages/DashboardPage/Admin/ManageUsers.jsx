@@ -41,14 +41,14 @@ const ManageUsers = () => {
         const toastId = toast.loading("Updating User Role...");
         // update user role to the database
         try {
-          const response = await axiosPublic.patch(`/users/${id}`, { newRole });
+          const response = await axiosPublic.patch(`/users/${id}`, {newRole});
           if (response.data.modifiedCount > 0) {
             toast.success("User Role Updated Successfully.", { id: toastId });
             refetch();
           }
         } catch (error) {
           console.error(error);
-          toast.error("An error occurred while updating this user.", {
+          toast.error("An error occurred while updating user role.", {
             id: toastId,
           });
         }
@@ -139,7 +139,7 @@ const ManageUsers = () => {
                       </td>
                       <td className={classes}>
                         <select
-                          className="px-1  py-1 rounded outline outline-1 outline-head"
+                          className="px-1 py-1 rounded outline outline-1 outline-head"
                           onChange={(e) =>
                             handleRoleUpdate(_id, e.target.value)
                           }

@@ -12,6 +12,7 @@ import AddContest from "../pages/DashboardPage/Creator/AddContest";
 import CreatorRoute from "./CreatorRoute";
 import MyCreatedContests from "../pages/DashboardPage/Creator/MyCreatedContests";
 import UpdateContest from "../pages/DashboardPage/Creator/UpdateContest";
+import ManageContests from "../pages/DashboardPage/Admin/ManageContests";
 
 export const routes = createBrowserRouter([
   {
@@ -46,6 +47,14 @@ export const routes = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageUsers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manage-contests",
+        element: (
+          <AdminRoute>
+            <ManageContests />
           </AdminRoute>
         ),
       },

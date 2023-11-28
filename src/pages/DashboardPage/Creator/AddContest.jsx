@@ -43,7 +43,6 @@ const AddContest = () => {
 
     try {
       const response = await axiosPublic.post("/contests", newContest);
-      console.log(response.data);
       if (response.data.insertedId) {
         toast.success("Contest Added Successfully.", { id: toastId });
         reset();

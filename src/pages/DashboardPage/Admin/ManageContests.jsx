@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet-async";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-import { PencilIcon, UserPlusIcon } from "@heroicons/react/24/solid";
 import {
   Card,
   CardHeader,
@@ -12,22 +11,18 @@ import {
   IconButton,
   Tooltip,
 } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
-import Swal from "sweetalert2";
-import toast from "react-hot-toast";
 import useAxiosPublic from "../../../components/hooks/useAxiosPublic";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
-const MyCreatedContests = () => {
-  const { user } = useContext(AuthContext);
+const ManageContests = () => {
   const axiosPublic = useAxiosPublic();
 
-  const { data: myContests = [], refetch } = useQuery({
-    queryKey: ["myContests", user?.email],
+  const { data: allContests = [], refetch } = useQuery({
+    queryKey: ["all-contests"],
     queryFn: async () => {
-      const response = await axiosPublic.get(`/contests/${user?.email}`);
+      const response = await axiosPublic.get("/contests");
       return response.data;
     },
   });
@@ -36,10 +31,10 @@ const MyCreatedContests = () => {
     "",
     "Title",
     "Prize Money",
+    "Added By",
     "Status",
-    "Edit",
     "Delete",
-    "See Submission",
+    "Confirm",
   ];
 
   const handleContestDelete = (id) => {
@@ -54,7 +49,7 @@ const MyCreatedContests = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const toastId = toast.loading("Deleting Contest...");
-        // delete own created contest from the database
+        // delete contest from the database
         try {
           const response = await axiosPublic.delete(`/contests/${id}`);
           if (response.data.deletedCount > 0) {
@@ -71,40 +66,55 @@ const MyCreatedContests = () => {
     });
   };
 
+  const handleConfirm = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, approve it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const toastId = toast.loading("Approving Contest...");
+        // update contest status to 'Approved' in the database
+        try {
+          const response = await axiosPublic.put(`/contest/${id}`);
+          if (response.data.modifiedCount > 0) {
+            toast.success("Contest Approval Successful.", { id: toastId });
+            refetch();
+          }
+        } catch (error) {
+          console.error(error);
+          toast.error("An error occurred while approving this contest.", {
+            id: toastId,
+          });
+        }
+      }
+    });
+  };
+
   return (
     <>
       <Helmet>
-        <title>Contest Hub | My Created Contests</title>
+        <title>Contest Hub | Manage Contests</title>
       </Helmet>
       <section>
-        <SectionTitle subHeading="--- Let's see ---" heading="added contests" />
+        <SectionTitle
+          subHeading="--- How many??? ---"
+          heading="manage all contests"
+        />
         {/* TABLE CARD */}
         <Card className="h-full w-full p-4">
           {/* TABLE HEADER */}
           <CardHeader floated={false} shadow={false} className="rounded-none">
-            <div className="mb-8 flex items-center justify-between gap-8">
-              <div>
-                <Typography variant="h4" color="blue-gray">
-                  My Created Contests List
-                </Typography>
-                <Typography color="gray" className="mt-1 font-normal">
-                  See information about my contests
-                </Typography>
-              </div>
-              <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
-                <Link to="/all-contest">
-                  <Button variant="outlined" size="md">
-                    view all
-                  </Button>
-                </Link>
-                <Link to="/dashboard/add-contest">
-                  <Button className="flex items-center gap-3" size="md">
-                    <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Add
-                    contest
-                  </Button>
-                </Link>
-              </div>
-            </div>
+            <Typography variant="h4" color="blue-gray">
+              Total Contests List
+            </Typography>
+            <Typography color="gray" className="mt-1 font-normal">
+              See information about all contests
+            </Typography>
           </CardHeader>
           {/* TABLE BODY */}
           <CardBody className="overflow-scroll px-0">
@@ -128,7 +138,7 @@ const MyCreatedContests = () => {
                 </tr>
               </thead>
               <tbody>
-                {myContests?.map(
+                {allContests?.map(
                   (
                     {
                       _id,
@@ -136,11 +146,12 @@ const MyCreatedContests = () => {
                       contest_name,
                       contest_type,
                       prize_money,
+                      created_by_email,
                       status,
                     },
                     index
                   ) => {
-                    const isLast = index === myContests?.length - 1;
+                    const isLast = index === allContests?.length - 1;
                     const classes = isLast
                       ? "p-4"
                       : "p-4 border-b border-blue-gray-50";
@@ -185,6 +196,14 @@ const MyCreatedContests = () => {
                         </td>
                         <td className={classes}>
                           <Typography
+                            variant="paragraph"
+                            className="font-medium"
+                          >
+                            {created_by_email}
+                          </Typography>
+                        </td>
+                        <td className={classes}>
+                          <Typography
                             variant="small"
                             color="blue-gray"
                             className="w-fit px-3 py-1 bg-opacity-80 rounded-md font-medium border border-head"
@@ -193,40 +212,9 @@ const MyCreatedContests = () => {
                             {status}
                           </Typography>
                         </td>
-                        <td className={classes}>
-                          {status === "pending" ? (
-                            <Link to={`/dashboard/update-contest/${_id}`}>
-                              <Tooltip content="Edit Contest">
-                                <IconButton variant="text">
-                                  <PencilIcon className="h-4 w-4" />
-                                </IconButton>
-                              </Tooltip>
-                            </Link>
-                          ) : (
-                            <Tooltip content="Edit Contest">
-                              <IconButton
-                                variant="text"
-                                onClick={() =>
-                                  toast.error(
-                                    "Contest Approved. Can't Modify Now!"
-                                  )
-                                }
-                              >
-                                <PencilIcon className="h-4 w-4" />
-                              </IconButton>
-                            </Tooltip>
-                          )}
-                        </td>
                         <td
                           className={classes}
-                          onClick={
-                            status === "pending"
-                              ? () => handleContestDelete(_id)
-                              : () =>
-                                  toast.error(
-                                    "You can't delete approved contest!"
-                                  )
-                          }
+                          onClick={() => handleContestDelete(_id)}
                         >
                           <Tooltip content="Delete Contest">
                             <IconButton variant="text">
@@ -247,60 +235,31 @@ const MyCreatedContests = () => {
                             </IconButton>
                           </Tooltip>
                         </td>
-                        <td className={classes}>
-                          <Tooltip content="See Submission">
-                            {status === "pending" ? (
-                              <IconButton
-                                variant="text"
-                                onClick={() =>
-                                  toast.error("Contest Need Approval First")
-                                }
+                        <td
+                          className={classes}
+                          onClick={
+                            status === "pending"
+                              ? () => handleConfirm(_id)
+                              : () => toast.error("Already Approved!")
+                          }
+                        >
+                          <Tooltip content="Approve Contest">
+                            <IconButton variant="text">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth="1.5"
+                                stroke="currentColor"
+                                className="w-6 h-6"
                               >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  strokeWidth={1.5}
-                                  stroke="currentColor"
-                                  className="w-6 h-6"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
-                                  />
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                                  />
-                                </svg>
-                              </IconButton>
-                            ) : (
-                              <Link to="/dashboard/contest-submitted">
-                                <IconButton variant="text">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={1.5}
-                                    stroke="currentColor"
-                                    className="w-6 h-6"
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
-                                    />
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                                    />
-                                  </svg>
-                                </IconButton>
-                              </Link>
-                            )}
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M4.5 12.75l6 6 9-13.5"
+                                />
+                              </svg>
+                            </IconButton>
                           </Tooltip>
                         </td>
                       </tr>
@@ -334,4 +293,4 @@ const MyCreatedContests = () => {
   );
 };
 
-export default MyCreatedContests;
+export default ManageContests;
