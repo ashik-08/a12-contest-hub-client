@@ -8,6 +8,8 @@ import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../pages/DashboardPage/Dashboard";
 import ManageUsers from "../pages/DashboardPage/Admin/ManageUsers";
 import AdminRoute from "./AdminRoute";
+import AddContest from "../pages/DashboardPage/Creator/AddContest/AddContest";
+import CreatorRoute from "./CreatorRoute";
 
 export const routes = createBrowserRouter([
   {
@@ -43,6 +45,15 @@ export const routes = createBrowserRouter([
           <AdminRoute>
             <ManageUsers />
           </AdminRoute>
+        ),
+      },
+      // creator route
+      {
+        path: "add-contest",
+        element: (
+          <CreatorRoute>
+            <AddContest />
+          </CreatorRoute>
         ),
       },
     ],

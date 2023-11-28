@@ -3,3 +3,31 @@
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Roboto+Slab:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700;900&display=swap");
+
+.animated-gradient {
+  background: linear-gradient(
+    220deg,
+    #edbffd28,
+    rgba(179, 179, 179, 0.3),
+    rgba(138, 204, 248, 0.2)
+  );
+  background-size: 600% 600%;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  animation: gradient 5s linear infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 75%;
+  }
+  50% {
+    background-position: 100% 25%;
+  }
+  100% {
+    background-position: 0% 75%;
+  }
+}
