@@ -18,16 +18,16 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
-import useAxiosPublic from "../../../components/hooks/useAxiosPublic";
+import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
 
 const MyCreatedContests = () => {
   const { user } = useContext(AuthContext);
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const { data: myContests = [], refetch } = useQuery({
     queryKey: ["my-contests", user?.email],
     queryFn: async () => {
-      const response = await axiosPublic.get(`/contests/${user?.email}`);
+      const response = await axiosSecure.get(`/contests/${user?.email}`);
       return response.data;
     },
   });
@@ -56,7 +56,7 @@ const MyCreatedContests = () => {
         const toastId = toast.loading("Deleting Contest...");
         // delete own created contest from the database
         try {
-          const response = await axiosPublic.delete(`/contests/${id}`);
+          const response = await axiosSecure.delete(`/contests/${id}`);
           if (response.data.deletedCount > 0) {
             toast.success("Contest Deleted Successfully.", { id: toastId });
             refetch();
