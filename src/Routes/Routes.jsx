@@ -13,11 +13,13 @@ import CreatorRoute from "./CreatorRoute";
 import MyCreatedContests from "../pages/DashboardPage/Creator/MyCreatedContests";
 import UpdateContest from "../pages/DashboardPage/Creator/UpdateContest";
 import ManageContests from "../pages/DashboardPage/Admin/ManageContests";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 export const routes = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
