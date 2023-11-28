@@ -7,7 +7,7 @@ const useGetRole = () => {
   const { user } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
   const { data: userRole, isLoading } = useQuery({
-    queryKey: ["userRole", user?.email],
+    queryKey: ["user-role", user?.email],
     queryFn: async () => {
       const response = await axiosPublic.get(`/users/role/${user.email}`);
       return response.data;

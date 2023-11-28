@@ -25,7 +25,7 @@ const MyCreatedContests = () => {
   const axiosPublic = useAxiosPublic();
 
   const { data: myContests = [], refetch } = useQuery({
-    queryKey: ["myContests", user?.email],
+    queryKey: ["my-contests", user?.email],
     queryFn: async () => {
       const response = await axiosPublic.get(`/contests/${user?.email}`);
       return response.data;
