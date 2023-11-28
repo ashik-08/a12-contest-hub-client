@@ -1,12 +1,12 @@
 import { Helmet } from "react-helmet-async";
-import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { useForm } from "react-hook-form";
 import { Fragment, useContext, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import useAxiosPublic from "../../../../components/hooks/useAxiosPublic";
+import useAxiosPublic from "../../../components/hooks/useAxiosPublic";
 import toast from "react-hot-toast";
-import { AuthContext } from "../../../../Provider/AuthProvider";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const tags = [
   "Business Contest",

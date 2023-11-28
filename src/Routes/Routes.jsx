@@ -8,7 +8,7 @@ import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../pages/DashboardPage/Dashboard";
 import ManageUsers from "../pages/DashboardPage/Admin/ManageUsers";
 import AdminRoute from "./AdminRoute";
-import AddContest from "../pages/DashboardPage/Creator/AddContest/AddContest";
+import AddContest from "../pages/DashboardPage/Creator/AddContest";
 import CreatorRoute from "./CreatorRoute";
 
 export const routes = createBrowserRouter([
