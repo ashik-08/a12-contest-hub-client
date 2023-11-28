@@ -10,6 +10,7 @@ import ManageUsers from "../pages/DashboardPage/Admin/ManageUsers";
 import AdminRoute from "./AdminRoute";
 import AddContest from "../pages/DashboardPage/Creator/AddContest";
 import CreatorRoute from "./CreatorRoute";
+import MyCreatedContests from "../pages/DashboardPage/Creator/MyCreatedContests";
 
 export const routes = createBrowserRouter([
   {
@@ -53,6 +54,14 @@ export const routes = createBrowserRouter([
         element: (
           <CreatorRoute>
             <AddContest />
+          </CreatorRoute>
+        ),
+      },
+      {
+        path: "my-created-contests",
+        element: (
+          <CreatorRoute>
+            <MyCreatedContests />
           </CreatorRoute>
         ),
       },
