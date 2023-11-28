@@ -1,5 +1,4 @@
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
-import useAxiosPublic from "../../../components/hooks/useAxiosPublic";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
@@ -8,6 +7,7 @@ import { Fragment, useContext, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/solid";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
 
 const tags = [
   "Business Contest",
@@ -19,7 +19,7 @@ const tags = [
 const UpdateContest = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const {
     contest_name,
@@ -55,7 +55,7 @@ const UpdateContest = () => {
     };
 
     try {
-      const response = await axiosPublic.patch(
+      const response = await axiosSecure.patch(
         `/contest/${id}`,
         updatedContest
       );

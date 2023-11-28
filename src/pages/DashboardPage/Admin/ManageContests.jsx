@@ -12,17 +12,17 @@ import {
   Tooltip,
 } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../../components/hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
 
 const ManageContests = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const { data: allContests = [], refetch } = useQuery({
     queryKey: ["all-contests"],
     queryFn: async () => {
-      const response = await axiosPublic.get("/contests");
+      const response = await axiosSecure.get("/contests");
       return response.data;
     },
   });
@@ -51,7 +51,7 @@ const ManageContests = () => {
         const toastId = toast.loading("Deleting Contest...");
         // delete contest from the database
         try {
-          const response = await axiosPublic.delete(`/contests/${id}`);
+          const response = await axiosSecure.delete(`/contests/${id}`);
           if (response.data.deletedCount > 0) {
             toast.success("Contest Deleted Successfully.", { id: toastId });
             refetch();
@@ -80,7 +80,7 @@ const ManageContests = () => {
         const toastId = toast.loading("Approving Contest...");
         // update contest status to 'Approved' in the database
         try {
-          const response = await axiosPublic.put(`/contest/${id}`);
+          const response = await axiosSecure.put(`/contest/${id}`);
           if (response.data.modifiedCount > 0) {
             toast.success("Contest Approval Successful.", { id: toastId });
             refetch();

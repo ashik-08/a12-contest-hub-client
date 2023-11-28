@@ -10,17 +10,17 @@ import {
   Avatar,
 } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../../components/hooks/useAxiosPublic";
+import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 
 const ManageUsers = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const { data: allUsers = [], refetch } = useQuery({
     queryKey: ["all-users"],
     queryFn: async () => {
-      const response = await axiosPublic.get("/users");
+      const response = await axiosSecure.get("/users");
       return response.data;
     },
   });
@@ -41,7 +41,7 @@ const ManageUsers = () => {
         const toastId = toast.loading("Updating User Role...");
         // update user role to the database
         try {
-          const response = await axiosPublic.patch(`/users/${id}`, {newRole});
+          const response = await axiosSecure.patch(`/users/${id}`, { newRole });
           if (response.data.modifiedCount > 0) {
             toast.success("User Role Updated Successfully.", { id: toastId });
             refetch();

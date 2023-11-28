@@ -1,8 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import {
-  FacebookAuthProvider,
-  GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -17,10 +15,6 @@ import useAxiosPublic from "../components/hooks/useAxiosPublic";
 export const AuthContext = createContext();
 
 const googleProvider = new GoogleAuthProvider();
-
-const githubProvider = new GithubAuthProvider();
-
-const facebookProvider = new FacebookAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -53,57 +47,28 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
-  const signInWithFacebook = () => {
-    setLoading(true);
-    return signInWithPopup(auth, facebookProvider);
-  };
-
-  const signInWithGithub = () => {
-    setLoading(true);
-    return signInWithPopup(auth, githubProvider);
-  };
-
   // logout user
   const logOut = () => {
-    // const loggedInUser = { email: user?.email };
     setLoading(true);
-    // axios
-    //   .post("https://m58-car-doctor-server.vercel.app/logout", loggedInUser, {
-    //     withCredentials: true,
-    //   })
-    //   .then((res) => {
-    //     console.log(res.data);
-    //   });
     return signOut(auth);
   };
 
   // observe auth state change
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-    //   const loggedInUser = { email: currentUser?.email };
+      const loggedInUser = { email: currentUser?.email };
       setUser(currentUser);
       setLoading(false);
-      //   if (currentUser) {
-      // get token and store to local storage
-      //     axiosPublic.post("/jwt", loggedInUser).then((res) => {
-      //       if (res.data.token) {
-      //         localStorage.setItem("access-token", res.data.token);
-      //       }
-      //     });
-      //   } else {
-      //     localStorage.removeItem("access-token");
-      //   }
-      // if user exists then issue a token
-      //   if (currentUser) {
-      //     // get access token with axios
-      //     axios
-      //       .post("https://m58-car-doctor-server.vercel.app/jwt", loggedInUser, {
-      //         withCredentials: true,
-      //       })
-      //       .then((res) => {
-      //         console.log(res.data);
-      //       });
-      //   }
+      if (currentUser) {
+        // get token and store to local storage
+        axiosPublic.post("/jwt", loggedInUser).then((res) => {
+          if (res.data.token) {
+            localStorage.setItem("access-token", res.data.token);
+          }
+        });
+      } else {
+        localStorage.removeItem("access-token");
+      }
     });
     return () => {
       unSubscribe();
@@ -117,8 +82,6 @@ const AuthProvider = ({ children }) => {
     updateUserProfile,
     signInUser,
     signInWithGoogle,
-    signInWithFacebook,
-    signInWithGithub,
     logOut,
   };
 

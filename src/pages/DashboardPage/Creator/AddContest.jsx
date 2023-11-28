@@ -4,9 +4,9 @@ import { useForm } from "react-hook-form";
 import { Fragment, useContext, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import useAxiosPublic from "../../../components/hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
 
 const tags = [
   "Business Contest",
@@ -17,7 +17,7 @@ const tags = [
 
 const AddContest = () => {
   const { user } = useContext(AuthContext);
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [selected, setSelected] = useState(tags[0]);
 
   const { register, handleSubmit, reset } = useForm();
@@ -42,7 +42,7 @@ const AddContest = () => {
     };
 
     try {
-      const response = await axiosPublic.post("/contests", newContest);
+      const response = await axiosSecure.post("/contests", newContest);
       if (response.data.insertedId) {
         toast.success("Contest Added Successfully.", { id: toastId });
         reset();
