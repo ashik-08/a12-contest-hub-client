@@ -42,3 +42,11 @@
 .react-tabs__tab {
   cursor: pointer;
 }
+
+.card-effect {
+  transition: transform 0.3s;
+}
+
+.card-effect:hover {
+  transform: scale(1.1);
+}

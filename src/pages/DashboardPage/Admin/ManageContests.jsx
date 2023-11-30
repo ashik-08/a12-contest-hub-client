@@ -18,7 +18,7 @@ import useContest from "../../../components/hooks/useContest";
 
 const ManageContests = () => {
   const axiosSecure = useAxiosSecure();
-  const [allContest, refetch] = useContest();
+  const [allContest, ,refetch] = useContest();
 
   const TABLE_HEAD = [
     "",
