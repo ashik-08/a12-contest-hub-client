@@ -8,6 +8,9 @@ module.exports = withMT({
       roboto: ["Roboto", "sans-serif"],
     },
     extend: {
+      backgroundImage: {
+        "hero-bg": "url('https://i.ibb.co/dpMHjX0/playing-chess-banner.jpg')",
+      },
       colors: {
         special: "#9b59b6",
         head: "#3498db",
