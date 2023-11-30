@@ -11,21 +11,14 @@ import {
   IconButton,
   Tooltip,
 } from "@material-tailwind/react";
-import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
+import useContest from "../../../components/hooks/useContest";
 
 const ManageContests = () => {
   const axiosSecure = useAxiosSecure();
-
-  const { data: allContests = [], refetch } = useQuery({
-    queryKey: ["all-contests"],
-    queryFn: async () => {
-      const response = await axiosSecure.get("/contests");
-      return response.data;
-    },
-  });
+  const [allContest, refetch] = useContest();
 
   const TABLE_HEAD = [
     "",
@@ -138,7 +131,7 @@ const ManageContests = () => {
                 </tr>
               </thead>
               <tbody>
-                {allContests?.map(
+                {allContest?.map(
                   (
                     {
                       _id,
@@ -151,7 +144,7 @@ const ManageContests = () => {
                     },
                     index
                   ) => {
-                    const isLast = index === allContests?.length - 1;
+                    const isLast = index === allContest?.length - 1;
                     const classes = isLast
                       ? "p-4"
                       : "p-4 border-b border-blue-gray-50";

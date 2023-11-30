@@ -14,6 +14,7 @@ import MyCreatedContests from "../pages/DashboardPage/Creator/MyCreatedContests"
 import UpdateContest from "../pages/DashboardPage/Creator/UpdateContest";
 import ManageContests from "../pages/DashboardPage/Admin/ManageContests";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import AllContestPage from "../pages/AllContestPage/AllContestPage";
 
 export const routes = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export const routes = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: "all-contest",
+        element: <AllContestPage />,
       },
     ],
   },

@@ -49,7 +49,7 @@ const Register = () => {
 
         try {
           const response = await axiosPublic.post("/users", user);
-          if (response.data.insertedId) {
+          if (response.status === 201 && response.statusText === "Created") {
             toast.success("User Created Successfully.");
           } else if (response.data.message === "Already exists") {
             console.log("User already exist.");

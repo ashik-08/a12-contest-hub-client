@@ -43,7 +43,7 @@ const AddContest = () => {
 
     try {
       const response = await axiosSecure.post("/contests", newContest);
-      if (response.data.insertedId) {
+      if (response.status === 201 && response.statusText === "Created") {
         toast.success("Contest Added Successfully.", { id: toastId });
         reset();
       } else if (response.data.message === "Already exists") {

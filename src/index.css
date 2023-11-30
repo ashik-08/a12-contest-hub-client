@@ -31,3 +31,14 @@
     background-position: 0% 75%;
   }
 }
+
+.react-tabs__tab--selected {
+  color: #3498db;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #3498db;
+}
+
+.react-tabs__tab {
+  cursor: pointer;
+}

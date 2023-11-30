@@ -79,9 +79,7 @@ const NavBar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/dashboard/contest-submitted">
-          Contest Submitted
-        </NavLink>
+        <NavLink to="/dashboard/contest-submitted">Contest Submitted</NavLink>
       </li>
     </>
   );
@@ -132,7 +130,9 @@ const NavBar = () => {
                   tabIndex={0}
                   className="menu menu-sm dropdown-content mt-4 z-[1] p-2 drop-shadow-lg bg-base-100 rounded-box w-max"
                 >
-                  {location?.pathname === "/" ? links : dashboardLinks}
+                  {location?.pathname?.includes("/dashboard")
+                    ? dashboardLinks
+                    : links}
                 </ul>
               </div>
               {/* logo & name */}
@@ -156,7 +156,9 @@ const NavBar = () => {
             <div className="navbar-end">
               <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal">
-                  {location?.pathname === "/" ? links : dashboardLinks}
+                  {location?.pathname?.includes("/dashboard")
+                    ? dashboardLinks
+                    : links}
                 </ul>
               </div>
               {user?.email ? (
@@ -192,7 +194,7 @@ const NavBar = () => {
                           {user?.displayName}
                         </p>
                       </li>
-                      {location?.pathname.includes("/dashboard") ? (
+                      {location?.pathname?.includes("/dashboard") ? (
                         <>
                           <li>
                             <Link to="/">Home</Link>
