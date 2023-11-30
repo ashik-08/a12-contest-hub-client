@@ -39,6 +39,9 @@ const AddContest = () => {
       created_by_photo: user?.photoURL,
       contest_deadline: data.deadline,
       status: "pending",
+      winner_name: "",
+      winner_email: "",
+      winner_photo: "",
     };
 
     try {

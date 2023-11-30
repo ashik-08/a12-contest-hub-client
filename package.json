@@ -18,6 +18,8 @@
     "firebase": "^10.6.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
+    "react-countdown": "^2.3.5",
+    "react-countdown-circle-timer": "^3.2.1",
     "react-dom": "^18.2.0",
     "react-helmet-async": "^2.0.1",
     "react-hook-form": "^7.48.2",

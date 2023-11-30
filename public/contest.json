@@ -2,7 +2,7 @@
   {
     "contest_name": "Business Strategy Challenge",
     "contest_image": "https://img.freepik.com/free-photo/chess-game-business-strategy-concept_53876-14820.jpg?w=1380&t=st=1701144472~exp=1701145072~hmac=4fb9effbf3a2e1b0e55a5e1c15e1117123fda4b5b2c4b951b6c55cb2c4a37a87",
-    "participation_count": 0,
+    "participation_count": 10,
     "description": "Develop a strategic plan for a new business venture.",
     "contest_price": 25,
     "prize_money": 1000,
@@ -11,13 +11,16 @@
     "created_by_name": "Alice Lewis",
     "created_by_email": "alice@mail.com",
     "created_by_photo": "https://shorturl.at/gtZ03",
-    "contest_deadline": "2023-12-15T18:00",
-    "status": "pending"
+    "contest_deadline": "2023-11-15T18:00",
+    "status": "accepted",
+    "winner_name": "Ashikur Rahman Ashik",
+    "winner_email": "ashikurrahman.8october@gmail.com",
+    "winner_photo": "https://lh3.googleusercontent.com/a/ACg8ocJYxRpW6bAqyrssrZ9NGxeDgH3D0mS-6YrxH91co4APdglJ=s96-c"
   },
   {
     "contest_name": "Strategic Innovators Challenge",
     "contest_image": "https://img.freepik.com/free-photo/male-graphic-designer-holding-spiral-notepad-with-text_1170-1104.jpg?w=1380&t=st=1701144837~exp=1701145437~hmac=839225e7a498b43eab2b73580f510a5dae900fc7c60a566f882515b904b19ce1",
-    "participation_count": 0,
+    "participation_count": 5,
     "description": "Develop a strategic plan for a new business venture.",
     "contest_price": 25,
     "prize_money": 1000,
@@ -26,8 +29,11 @@
     "created_by_name": "Tony Stark",
     "created_by_email": "stark@mail.com",
     "created_by_photo": "https://shorturl.at/wA025",
-    "contest_deadline": "2023-12-15T12:00",
-    "status": "pending"
+    "contest_deadline": "2023-11-29T12:00",
+    "status": "accepted",
+    "winner_name": "Leo Das",
+    "winner_email": "leo@mail.com",
+    "winner_photo": "https://shorturl.at/ozCI6"
   },
   {
     "contest_name": "Innovation Summit Business Challenge",
@@ -42,7 +48,10 @@
     "created_by_email": "alice@mail.com",
     "created_by_photo": "https://shorturl.at/gtZ03",
     "contest_deadline": "2023-12-10T15:00",
-    "status": "pending"
+    "status": "pending",
+    "winner_name": "",
+    "winner_email": "",
+    "winner_photo": ""
   },
   {
     "contest_name": "Entrepreneurship Excellence Challenge",
@@ -57,7 +66,10 @@
     "created_by_email": "alice@mail.com",
     "created_by_photo": "https://shorturl.at/gtZ03",
     "contest_deadline": "2023-12-20T08:00",
-    "status": "pending"
+    "status": "pending",
+    "winner_name": "",
+    "winner_email": "",
+    "winner_photo": ""
   },
   {
     "contest_name": "Inclusive Business Innovation Contest",
@@ -72,7 +84,10 @@
     "created_by_email": "stark@mail.com",
     "created_by_photo": "https://shorturl.at/wA025",
     "contest_deadline": "2023-12-10T00:00",
-    "status": "pending"
+    "status": "pending",
+    "winner_name": "",
+    "winner_email": "",
+    "winner_photo": ""
   },
 
   {
@@ -88,12 +103,15 @@
     "created_by_email": "alice@mail.com",
     "created_by_photo": "https://shorturl.at/gtZ03",
     "contest_deadline": "2023-11-30T18:00",
-    "status": "pending"
+    "status": "pending",
+    "winner_name": "",
+    "winner_email": "",
+    "winner_photo": ""
   },
   {
     "contest_name": "Medical Breakthrough Research Contest",
     "contest_image": "https://img.freepik.com/free-photo/biotechnology-specialist-laboratory-conducting-experiments_23-2150468678.jpg?w=1380&t=st=1701146894~exp=1701147494~hmac=a0abb51702062e6947fc6ad250fa156663d11b03c0dfec04a70ab8ff409f1dc8",
-    "participation_count": 0,
+    "participation_count": 12,
     "description": "Contribute to groundbreaking medical research.",
     "contest_price": 35,
     "prize_money": 1500,
@@ -103,7 +121,10 @@
     "created_by_email": "stark@mail.com",
     "created_by_photo": "https://shorturl.at/wA025",
     "contest_deadline": "2023-11-30T09:00",
-    "status": "pending"
+    "status": "accepted",
+    "winner_name": "Ashikur Rahman Ashik",
+    "winner_email": "ashikurrahman.8october@gmail.com",
+    "winner_photo": "https://lh3.googleusercontent.com/a/ACg8ocJYxRpW6bAqyrssrZ9NGxeDgH3D0mS-6YrxH91co4APdglJ=s96-c"
   },
   {
     "contest_name": "Healthcare Innovation Challenge",
@@ -118,12 +139,15 @@
     "created_by_email": "alice@mail.com",
     "created_by_photo": "https://shorturl.at/gtZ03",
     "contest_deadline": "2023-12-05T15:00",
-    "status": "pending"
+    "status": "pending",
+    "winner_name": "",
+    "winner_email": "",
+    "winner_photo": ""
   },
   {
     "contest_name": "Global Health Impact Challenge",
     "contest_image": "https://img.freepik.com/free-photo/globe-care-with-stethoscope-blue-background_23-2147817247.jpg?w=1380&t=st=1701146823~exp=1701147423~hmac=511255ea6617d835bdbb9672a65f0c1fdd372190092097aa22bdad3280a5d24a",
-    "participation_count": 0,
+    "participation_count": 10,
     "description": "Contribute to improving global health outcomes.",
     "contest_price": 30,
     "prize_money": 1800,
@@ -132,13 +156,16 @@
     "created_by_name": "Tony Stark",
     "created_by_email": "stark@mail.com",
     "created_by_photo": "https://shorturl.at/wA025",
-    "contest_deadline": "2023-12-15T12:00",
-    "status": "pending"
+    "contest_deadline": "2023-12-10T12:00",
+    "status": "accepted",
+    "winner_name": "",
+    "winner_email": "",
+    "winner_photo": ""
   },
   {
     "contest_name": "Pediatric Innovators Showcase",
     "contest_image": "https://img.freepik.com/free-photo/side-view-doctor-examining-child_23-2148231357.jpg?w=1380&t=st=1701147056~exp=1701147656~hmac=7517795844b2da050b9e5901bbcc21eba02d678c7eb9762734283a7b1ef12d0e",
-    "participation_count": 0,
+    "participation_count": 3,
     "description": "Highlight innovations for pediatric healthcare.",
     "contest_price": 25,
     "prize_money": 1200,
@@ -147,8 +174,11 @@
     "created_by_name": "Alice Lewis",
     "created_by_email": "alice@mail.com",
     "created_by_photo": "https://shorturl.at/gtZ03",
-    "contest_deadline": "2023-12-05T15:00",
-    "status": "pending"
+    "contest_deadline": "2023-11-25T15:00",
+    "status": "accepted",
+    "winner_name": "Leo Das",
+    "winner_email": "leo@mail.com",
+    "winner_photo": "https://shorturl.at/ozCI6"
   },
 
   {
@@ -164,7 +194,10 @@
     "created_by_email": "stark@mail.com",
     "created_by_photo": "https://shorturl.at/wA025",
     "contest_deadline": "2023-12-05T12:00",
-    "status": "pending"
+    "status": "pending",
+    "winner_name": "",
+    "winner_email": "",
+    "winner_photo": ""
   },
   {
     "contest_name": "Tech Trends Article Contest",
@@ -179,12 +212,15 @@
     "created_by_email": "stark@mail.com",
     "created_by_photo": "https://shorturl.at/wA025",
     "contest_deadline": "2023-12-05T06:00",
-    "status": "pending"
+    "status": "pending",
+    "winner_name": "",
+    "winner_email": "",
+    "winner_photo": ""
   },
   {
     "contest_name": "Environmental Sustainability Article Contest",
     "contest_image": "https://img.freepik.com/free-photo/sunny-landscape-with-windmills_1112-78.jpg?w=1380&t=st=1701147200~exp=1701147800~hmac=893beff34e2a8e670413479e2ee1d41df864e52bea69625bf3ed711249a68e7d",
-    "participation_count": 0,
+    "participation_count": 7,
     "description": "Highlight the importance of environmental sustainability.",
     "contest_price": 25,
     "prize_money": 1200,
@@ -194,12 +230,15 @@
     "created_by_email": "alice@mail.com",
     "created_by_photo": "https://shorturl.at/gtZ03",
     "contest_deadline": "2023-12-10T11:00",
-    "status": "pending"
+    "status": "accepted",
+    "winner_name": "",
+    "winner_email": "",
+    "winner_photo": ""
   },
   {
     "contest_name": "Future Tech Trends Article Contest",
     "contest_image": "https://img.freepik.com/free-photo/asian-young-male-wearing-wearable-goggle-headset-virtual-online-meeting-digital-space-working-with-3d-augmented-dimension-homecyber-virtual-working-with-virtual-vr-goggle-pc-desktop-device_609648-2614.jpg?w=1380&t=st=1701147276~exp=1701147876~hmac=62573019c7179bf082a64cca0891ea77a67bc7e6adb122beb993cfd1c076dde0",
-    "participation_count": 0,
+    "participation_count": 9,
     "description": "Predict and write about future trends in technology.",
     "contest_price": 25,
     "prize_money": 1200,
@@ -208,8 +247,11 @@
     "created_by_name": "Tony Stark",
     "created_by_email": "stark@mail.com",
     "created_by_photo": "https://shorturl.at/wA025",
-    "contest_deadline": "2023-12-12T04:00",
-    "status": "pending"
+    "contest_deadline": "2023-11-28T04:00",
+    "status": "accepted",
+    "winner_name": "Ashikur Rahman Ashik",
+    "winner_email": "ashikurrahman.8october@gmail.com",
+    "winner_photo": "https://lh3.googleusercontent.com/a/ACg8ocJYxRpW6bAqyrssrZ9NGxeDgH3D0mS-6YrxH91co4APdglJ=s96-c"
   },
   {
     "contest_name": "Environmental Advocacy Article Contest",
@@ -224,7 +266,10 @@
     "created_by_email": "alice@mail.com",
     "created_by_photo": "https://shorturl.at/gtZ03",
     "contest_deadline": "2023-12-08T06:00",
-    "status": "pending"
+    "status": "pending",
+    "winner_name": "",
+    "winner_email": "",
+    "winner_photo": ""
   },
 
   {
@@ -239,13 +284,16 @@
     "created_by_name": "Tony Stark",
     "created_by_email": "stark@mail.com",
     "created_by_photo": "https://shorturl.at/wA025",
-    "contest_deadline": "2023-11-25T09:00",
-    "status": "pending"
+    "contest_deadline": "2023-12-25T09:00",
+    "status": "pending",
+    "winner_name": "",
+    "winner_email": "",
+    "winner_photo": ""
   },
   {
     "contest_name": "Epic Battles Gaming Tournament",
     "contest_image": "https://img.freepik.com/free-photo/dragons-fantasy-artificial-intelligence-image_23-2150400886.jpg?t=st=1701147790~exp=1701151390~hmac=6b10263b85ed11c9bbc6ea63bf17d071a6e78e14b0ad4dcc6aea737b8145ebc7&w=1380",
-    "participation_count": 0,
+    "participation_count": 18,
     "description": "Participate in an epic battles gaming tournament.",
     "contest_price": 15,
     "prize_money": 500,
@@ -255,7 +303,10 @@
     "created_by_email": "stark@mail.com",
     "created_by_photo": "https://shorturl.at/wA025",
     "contest_deadline": "2023-11-25T15:00",
-    "status": "pending"
+    "status": "accepted",
+    "winner_name": "Leo Das",
+    "winner_email": "leo@mail.com",
+    "winner_photo": "https://shorturl.at/ozCI6"
   },
   {
     "contest_name": "Racing Legends Challenge",
@@ -269,8 +320,11 @@
     "created_by_name": "Alice Lewis",
     "created_by_email": "alice@mail.com",
     "created_by_photo": "https://shorturl.at/gtZ03",
-    "contest_deadline": "2023-12-01T15:00",
-    "status": "pending"
+    "contest_deadline": "2023-12-08T15:00",
+    "status": "pending",
+    "winner_name": "",
+    "winner_email": "",
+    "winner_photo": ""
   },
   {
     "contest_name": "Strategy Masters Gaming Tournament",
@@ -284,13 +338,16 @@
     "created_by_name": "Alice Lewis",
     "created_by_email": "alice@mail.com",
     "created_by_photo": "https://shorturl.at/gtZ03",
-    "contest_deadline": "2023-11-28T00:00",
-    "status": "pending"
+    "contest_deadline": "2023-12-14T00:00",
+    "status": "pending",
+    "winner_name": "",
+    "winner_email": "",
+    "winner_photo": ""
   },
   {
     "contest_name": "Adventure Quest Gaming Challenge",
     "contest_image": "https://img.freepik.com/free-photo/mountain-exploration-photography_1409-5380.jpg?t=st=1701148284~exp=1701151884~hmac=793dbf8e342c62255f6be0cd7bb347f5c0a70000f333f2d90c03b9675560483c&w=1380",
-    "participation_count": 0,
+    "participation_count": 6,
     "description": "Embark on an epic adventure in a gaming quest.",
     "contest_price": 15,
     "prize_money": 600,
@@ -299,7 +356,10 @@
     "created_by_name": "Tony Stark",
     "created_by_email": "stark@mail.com",
     "created_by_photo": "https://shorturl.at/wA025",
-    "contest_deadline": "2023-12-02T12:00",
-    "status": "pending"
+    "contest_deadline": "2023-11-30T12:00",
+    "status": "accepted",
+    "winner_name": "Leo Das",
+    "winner_email": "leo@mail.com",
+    "winner_photo": "https://shorturl.at/ozCI6"
   }
 ]

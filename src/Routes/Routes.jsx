@@ -15,6 +15,7 @@ import UpdateContest from "../pages/DashboardPage/Creator/UpdateContest";
 import ManageContests from "../pages/DashboardPage/Admin/ManageContests";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import AllContestPage from "../pages/AllContestPage/AllContestPage";
+import ContestDetails from "../pages/ContestDetails/ContestDetails";
 
 export const routes = createBrowserRouter([
   {
@@ -29,6 +30,16 @@ export const routes = createBrowserRouter([
       {
         path: "all-contest",
         element: <AllContestPage />,
+      },
+      {
+        path: "all-contest/:id",
+        element: (
+          <PrivateRoute>
+            <ContestDetails />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5001/contest/${params.id}`),
       },
     ],
   },
