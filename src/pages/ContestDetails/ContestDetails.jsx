@@ -3,9 +3,12 @@ import Container from "../../components/Container/Container";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import DeadlineCounter from "./DeadlineCounter";
 import { Link, useLoaderData, useParams } from "react-router-dom";
+import toast from "react-hot-toast";
+import useGetRole from "../../components/hooks/useGetRole";
 
 const ContestDetails = () => {
   const { id } = useParams();
+  const [userRole] = useGetRole();
   const {
     contest_name,
     contest_image,
@@ -36,7 +39,7 @@ const ContestDetails = () => {
         />
         <DeadlineCounter deadline={contest_deadline} />
         {/* contest winner */}
-        {difference <= 0 && winner_email && (
+        {winner_email && (
           <>
             <SectionTitle
               subHeading="--- Let's see ---"
@@ -102,12 +105,33 @@ const ContestDetails = () => {
               </span>
             </p>
             <button className="pt-8">
-              <Link
-                to={`/register-contest/${id}`}
-                className="bg-head px-8 py-3.5 rounded-lg"
-              >
-                Register Now
-              </Link>
+              {difference <= 0 || winner_email ? (
+                <button
+                  onClick={() => {
+                    (!userRole?.participant &&
+                      toast.error("You can't participate!")) ||
+                      (difference <= 0 &&
+                        toast.error("Time over. Can't register now!")) ||
+                      (winner_email &&
+                        toast.error("Winner selected. Can't register now!"));
+                  }}
+                  className="bg-head px-8 py-3 rounded-lg"
+                  //   disabled={!userRole?.participant || difference <= 0 || winner_email}
+                >
+                  Register Now
+                </button>
+              ) : (
+                <Link
+                  to={userRole?.participant ? `/register-by-payment/${id}` : ""}
+                  className="bg-head px-8 py-3.5 rounded-lg"
+                  onClick={() =>
+                    !userRole?.participant &&
+                    toast.error("You can't participate!")
+                  }
+                >
+                  Register Now
+                </Link>
+              )}
             </button>
           </div>
         </div>

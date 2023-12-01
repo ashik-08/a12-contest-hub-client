@@ -16,6 +16,7 @@ import ManageContests from "../pages/DashboardPage/Admin/ManageContests";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import AllContestPage from "../pages/AllContestPage/AllContestPage";
 import ContestDetails from "../pages/ContestDetails/ContestDetails";
+import Payment from "../pages/Payment/Payment";
 
 export const routes = createBrowserRouter([
   {
@@ -39,7 +40,16 @@ export const routes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
+          // fetch(`https://a12-contest-hub-server.vercel.app/contest/${params.id}`),
           fetch(`http://localhost:5001/contest/${params.id}`),
+      },
+      {
+        path: "register-by-payment/:id",
+        element: (
+          <PrivateRoute>
+            <Payment />
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -101,6 +111,7 @@ export const routes = createBrowserRouter([
           </CreatorRoute>
         ),
         loader: ({ params }) =>
+          // fetch(`https://a12-contest-hub-server.vercel.app/contest/${params.id}`),
           fetch(`http://localhost:5001/contest/${params.id}`),
       },
     ],

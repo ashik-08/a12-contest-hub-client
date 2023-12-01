@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const axiosSecure = axios.create({
+//   baseURL: "https://a12-contest-hub-server.vercel.app",
   baseURL: "http://localhost:5001",
   withCredentials: true,
+  include: true,
 });
 
 const useAxiosSecure = () => {
