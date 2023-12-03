@@ -16,7 +16,8 @@ const AllContestPage = () => {
   const [tabIndex, setTabIndex] = useState(tags[0]);
 
   // load data with custom hook
-  const [allContest] = useContest();
+  const [allContest] = useContest("");
+  console.log(allContest);
   const business = allContest.filter(
     (type) => type.contest_type === "Business Contest"
   );
