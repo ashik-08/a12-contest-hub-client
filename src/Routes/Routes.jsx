@@ -19,6 +19,7 @@ import ContestDetails from "../pages/ContestDetails/ContestDetails";
 import Payment from "../pages/Payment/Payment";
 import MyRegisteredContest from "../pages/DashboardPage/Participant/MyRegisteredContest";
 import ContestSubmitted from "../pages/DashboardPage/Creator/ContestSubmitted";
+import MyProfile from "../pages/DashboardPage/Participant/MyProfile";
 
 export const routes = createBrowserRouter([
   {
@@ -130,6 +131,14 @@ export const routes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyRegisteredContest />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "profile",
+        element: (
+          <PrivateRoute>
+            <MyProfile />
           </PrivateRoute>
         ),
       },
