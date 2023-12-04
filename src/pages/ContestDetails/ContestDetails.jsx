@@ -29,12 +29,10 @@ const ContestDetails = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
 
-  const { data: registered = [] } = useQuery({
-    queryKey: ["registered"],
+  const { data: paid = [] } = useQuery({
+    queryKey: ["paid", id, user?.email],
     queryFn: async () => {
-      const response = await axiosSecure.get(
-        `/registered/${id}/${user?.email}`
-      );
+      const response = await axiosSecure.get(`/payments/${id}/${user?.email}`);
       return response.data;
     },
   });
@@ -140,7 +138,7 @@ const ContestDetails = () => {
               ) : (
                 <Link
                   to={
-                    userRole?.participant && !registered
+                    userRole?.participant && !paid
                       ? `/register-by-payment/${id}`
                       : ""
                   }
@@ -148,7 +146,7 @@ const ContestDetails = () => {
                   onClick={() =>
                     (!userRole?.participant &&
                       toast.error("You can't participate!")) ||
-                    (registered && toast.error("Already registered!"))
+                    (paid && toast.error("Already registered!"))
                   }
                 >
                   Register Now

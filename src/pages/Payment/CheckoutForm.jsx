@@ -126,6 +126,7 @@ const CheckoutForm = () => {
           contestId: contest?._id,
           contest_name: contest?.contest_name,
           contest_image: contest?.contest_image,
+          contest_deadline: contest?.contest_deadline,
           participant_name: user?.displayName,
           participant_email: user?.email,
           participant_photo: user?.photoURL,
