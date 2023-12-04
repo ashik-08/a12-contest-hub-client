@@ -43,8 +43,8 @@ export const routes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          // fetch(`https://a12-contest-hub-server.vercel.app/contest/${params.id}`),
-          fetch(`http://localhost:5001/contest/${params.id}`),
+          fetch(`https://a12-contest-hub-server.vercel.app/contest/${params.id}`),
+          // fetch(`http://localhost:5001/contest/${params.id}`),
       },
       {
         path: "register-by-payment/:id",
@@ -114,8 +114,8 @@ export const routes = createBrowserRouter([
           </CreatorRoute>
         ),
         loader: ({ params }) =>
-          // fetch(`https://a12-contest-hub-server.vercel.app/contest/${params.id}`),
-          fetch(`http://localhost:5001/contest/${params.id}`),
+          fetch(`https://a12-contest-hub-server.vercel.app/contest/${params.id}`),
+          // fetch(`http://localhost:5001/contest/${params.id}`),
       },
       {
         path: "contest-submitted/:id",
