@@ -45,7 +45,7 @@ const CheckoutForm = () => {
 
   useEffect(() => {
     axiosSecure
-      .post("/create-payment-intent", { price: totalPrice })
+      .post("/payments/create-payment-intent", { price: totalPrice })
       .then((response) => {
         console.log(response.data.clientSecret);
         setClientSecret(response.data.clientSecret);
@@ -122,7 +122,21 @@ const CheckoutForm = () => {
           transactionId: paymentIntent.id,
           paymentDate: moment().format("dddd, MMMM DD, YYYY, hh:mm:ss A, Z"),
         };
-        const response = await axiosSecure.post("payments", payment);
+        const register = {
+          contestId: contest?._id,
+          contest_name: contest?.contest_name,
+          contest_image: contest?.contest_image,
+          participant_name: user?.displayName,
+          participant_email: user?.email,
+          participant_photo: user?.photoURL,
+          prize_money: contest?.prize_money,
+          submission_instruction: contest?.submission_instruction,
+          status: "registered",
+        };
+        const response = await axiosSecure.post("/payments", {
+          payment,
+          register,
+        });
         if (response.status === 201 && response.statusText === "Created") {
           toast.success("Payment Successful.", { id: toastId });
           navigate("/all-contest");

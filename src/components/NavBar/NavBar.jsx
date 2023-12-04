@@ -55,8 +55,8 @@ const NavBar = () => {
   const userLinks = (
     <>
       <li>
-        <NavLink to="/dashboard/participated-contests">
-          My Participated Contests
+        <NavLink to="/dashboard/registered-contests">
+          My Registered Contests
         </NavLink>
       </li>
       <li>

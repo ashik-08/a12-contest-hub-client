@@ -5,6 +5,10 @@ import DeadlineCounter from "./DeadlineCounter";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import useGetRole from "../../components/hooks/useGetRole";
+import { useContext } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { AuthContext } from "../../Provider/AuthProvider";
+import useAxiosSecure from "../../components/hooks/useAxiosSecure";
 
 const ContestDetails = () => {
   const { id } = useParams();
@@ -21,6 +25,19 @@ const ContestDetails = () => {
     winner_email,
     winner_photo,
   } = useLoaderData();
+
+  const axiosSecure = useAxiosSecure();
+  const { user } = useContext(AuthContext);
+
+  const { data: registered = [] } = useQuery({
+    queryKey: ["registered"],
+    queryFn: async () => {
+      const response = await axiosSecure.get(
+        `/registered/${id}/${user?.email}`
+      );
+      return response.data;
+    },
+  });
 
   const now = new Date().getTime();
   const deadlineDate = new Date(contest_deadline).getTime();
@@ -106,7 +123,7 @@ const ContestDetails = () => {
             </p>
             <button className="pt-8">
               {difference <= 0 || winner_email ? (
-                <button
+                <Link
                   onClick={() => {
                     (!userRole?.participant &&
                       toast.error("You can't participate!")) ||
@@ -115,18 +132,23 @@ const ContestDetails = () => {
                       (winner_email &&
                         toast.error("Winner selected. Can't register now!"));
                   }}
-                  className="bg-head px-8 py-3 rounded-lg"
+                  className="bg-head px-8 py-3.5 rounded-lg"
                   //   disabled={!userRole?.participant || difference <= 0 || winner_email}
                 >
                   Register Now
-                </button>
+                </Link>
               ) : (
                 <Link
-                  to={userRole?.participant ? `/register-by-payment/${id}` : ""}
+                  to={
+                    userRole?.participant && !registered
+                      ? `/register-by-payment/${id}`
+                      : ""
+                  }
                   className="bg-head px-8 py-3.5 rounded-lg"
                   onClick={() =>
-                    !userRole?.participant &&
-                    toast.error("You can't participate!")
+                    (!userRole?.participant &&
+                      toast.error("You can't participate!")) ||
+                    (registered && toast.error("Already registered!"))
                   }
                 >
                   Register Now
