@@ -79,7 +79,7 @@ const NavBar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/dashboard/contest-submitted">Contest Submitted</NavLink>
+        <NavLink to="/dashboard/contest-submitted/6568a44cd576256070eaba4f">Contest Submitted</NavLink>
       </li>
     </>
   );

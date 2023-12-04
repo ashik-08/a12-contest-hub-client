@@ -31,7 +31,7 @@ const MyRegisteredContest = () => {
   const { data: myRegistered = [], refetch } = useQuery({
     queryKey: ["my-registered"],
     queryFn: async () => {
-      const response = await axiosSecure.get(`/registered/${user?.email}`);
+      const response = await axiosSecure.get(`/registered?email=${user?.email}`);
       return response.data;
     },
   });

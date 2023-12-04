@@ -277,7 +277,7 @@ const MyCreatedContests = () => {
                                 </svg>
                               </IconButton>
                             ) : (
-                              <Link to="/dashboard/contest-submitted">
+                              <Link to={`/dashboard/contest-submitted/${_id}`}>
                                 <IconButton variant="text">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"

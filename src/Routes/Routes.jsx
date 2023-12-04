@@ -18,6 +18,7 @@ import AllContestPage from "../pages/AllContestPage/AllContestPage";
 import ContestDetails from "../pages/ContestDetails/ContestDetails";
 import Payment from "../pages/Payment/Payment";
 import MyRegisteredContest from "../pages/DashboardPage/Participant/MyRegisteredContest";
+import ContestSubmitted from "../pages/DashboardPage/Creator/ContestSubmitted";
 
 export const routes = createBrowserRouter([
   {
@@ -114,6 +115,14 @@ export const routes = createBrowserRouter([
         loader: ({ params }) =>
           // fetch(`https://a12-contest-hub-server.vercel.app/contest/${params.id}`),
           fetch(`http://localhost:5001/contest/${params.id}`),
+      },
+      {
+        path: "contest-submitted/:id",
+        element: (
+          <CreatorRoute>
+            <ContestSubmitted />
+          </CreatorRoute>
+        ),
       },
       // participant
       {

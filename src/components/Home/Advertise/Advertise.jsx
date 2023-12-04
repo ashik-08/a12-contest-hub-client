@@ -44,7 +44,7 @@ const Advertise = () => {
                 <div className="absolute inset-0 slider-img-gradient"></div>
                 <div className="absolute transform -translate-y-1/2 left-2 top-1/2 md:left-16 lg:left-20 space-y-1 md:space-y-1.5 lg:space-y-2.5 xl:space-y-4">
                   <img
-                    className="max-w-[60px] md:max-w-[100px] xl:max-w-[120px]"
+                    className="max-w-[60px] md:max-w-[80px] xl:max-w-[120px]"
                     src={contest.winner_photo}
                     alt="creator's-img"
                   />
@@ -57,7 +57,7 @@ const Advertise = () => {
                   <p className="text-head text-sm md:text-lg lg:text-xl xl:text-2xl font-semibold">
                     Attempted: {contest.participation_count}
                   </p>
-                  <p className="max-w-xs lg:max-w-sm hidden md:flex text-blue-gray-100 md:text-base lg:text-base 2xl:text-lg md:font-medium">
+                  <p className="max-w-xs lg:max-w-sm hidden md:flex text-blue-gray-100 md:text-base lg:text-base md:font-medium">
                     ContestHub is a dynamic and user-friendly Project Contest
                     Creation Platform designed to foster creativity, engage
                     communities, and celebrate talent across various domains.
